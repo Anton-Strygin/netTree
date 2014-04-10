@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netTree", "netTree\netTree.csproj", "{EECE56EA-D54F-45CA-95C8-60A5C708B207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jsTree", "jsTree\jsTree.csproj", "{67260E5D-880D-4B28-AA02-83ECE5C89E6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EECE56EA-D54F-45CA-95C8-60A5C708B207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECE56EA-D54F-45CA-95C8-60A5C708B207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECE56EA-D54F-45CA-95C8-60A5C708B207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECE56EA-D54F-45CA-95C8-60A5C708B207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67260E5D-880D-4B28-AA02-83ECE5C89E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67260E5D-880D-4B28-AA02-83ECE5C89E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67260E5D-880D-4B28-AA02-83ECE5C89E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67260E5D-880D-4B28-AA02-83ECE5C89E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
