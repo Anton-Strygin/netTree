@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="/scripts/jsTree/themes/argustree/style.css" />
     <script type="text/javascript" src="/scripts/jquery-2.1.0.js"></script>
 	<script type="text/javascript" src="/scripts/jsTree/jstree.js"></script>
+	<script type="text/javascript" src="/scripts/jsTree/netTree.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Literal ID="litSelectedItems" runat="server" />
+        <br />         
+        <asp:Button runat="server" ID="btnPostback" Text="ClickMe"/>
         <div>
             <wc:SimpleTree ID="simpleTree"  runat="server" />
         </div>

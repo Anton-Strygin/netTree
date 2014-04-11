@@ -43,6 +43,13 @@ namespace netTree
         {
             TreeDataSourceExample();
             FlatDataSourceExample();
+
+            btnPostback.Click += btnPostback_Click;
+        }
+
+        void btnPostback_Click(object sender, EventArgs e)
+        {
+            litSelectedItems.Text = string.Join(", ", categoryTree.SelectedItems);
         }
     }
 }

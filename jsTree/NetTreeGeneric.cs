@@ -87,8 +87,8 @@ namespace jsTree
         {
             var sb = new StringBuilder();
             sb.AppendFormat("$('#{0}')", this.Page.Form.ClientID);
-            sb.AppendFormat(".submit(rememberCheckedNodes('{0}', '{1}'));", this.JSTreeId, _hfSelectedItems.ClientID);
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "RememberCheckedNodes_" + this.JSTreeId, sb.ToString(), true);
+            sb.AppendFormat(".submit(rememberCheckedNodes('{0}', '{1}', {2}));", this.JSTreeId, _hfSelectedItems.ClientID, string.IsNullOrEmpty(JSSelectedNodesValidation) ? "null" : JSSelectedNodesValidation);
+            ScriptManager.RegisterOnSubmitStatement(this.Page, this.GetType(), "RememberCheckedNodes_" + this.JSTreeId, sb.ToString());
         }
 
         protected virtual string GetNodeType(NetTreeDataSource<TK, TV> value)
