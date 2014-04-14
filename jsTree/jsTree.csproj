@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NetTreeCheckbox.cs" />
     <Compile Include="Plugins\INetTreePlugin.cs" />
     <Compile Include="NetTreeGeneric.cs" />
     <Compile Include="Plugins\NetTreePluginCore.cs" />

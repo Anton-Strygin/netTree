@@ -42,7 +42,7 @@ namespace jsTree.Plugins
         public bool WholeNode { get; set; }
 
         /// <summary>
-        /// a boolean indicating if the selected style of a node should be kept, or removed. Defaults to true.
+        /// a boolean indicating if the selected style of a node should be kept, or removed. Defaults to false.
         /// </summary>
         public bool KeepSelectedStyle { get; set; }
 
@@ -52,7 +52,7 @@ namespace jsTree.Plugins
             Visible = true;
             ThreeState = true;
             WholeNode = true;
-            KeepSelectedStyle = true;
+            KeepSelectedStyle = false;
         }
     }
 }

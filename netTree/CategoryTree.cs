@@ -7,12 +7,12 @@ using jsTree.Plugins;
 
 namespace netTree
 {
-    public class CategoryTree : NetTreeGeneric<int, Category>
+    public class CategoryTree : NetTreeCheckbox<int, Category>
     {
         public CategoryTree()
         {
-            var cbPlugin = new NetTreePluginCheckbox();            
-            Plugins.Add(cbPlugin);
+            RootNode = "Select all";
+            TwoState = true;
         }
 
         protected override string GetNodeDescription(Category value)

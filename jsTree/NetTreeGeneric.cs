@@ -31,7 +31,7 @@ namespace jsTree
         public NetTreeDataSource<TK, TV> DataSourceTree { get; set; }
 
 
-        private HiddenField _hfSelectedItems;
+        protected HiddenField _hfSelectedItems;
         private const string SelectedItemsDefaultValue = "default";
 
         private List<TK> _selectedItems;
@@ -97,7 +97,7 @@ namespace jsTree
             return hasChildren ? "" : "leaf";
         }
 
-        private void RenderNode(TK key, NetTreeDataSource<TK, TV> value, HtmlTextWriter writer)
+        protected void RenderNode(TK key, NetTreeDataSource<TK, TV> value, HtmlTextWriter writer)
         {
             bool hasChildren = value.Any();
             string nodeType = GetNodeType(value);
