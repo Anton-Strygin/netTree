@@ -54,6 +54,11 @@ namespace jsTree
             }
         }
 
+        protected override TK ParseNodeId(string id)
+        {
+            return id == RootNodeId ? default(TK) : base.ParseNodeId(id);
+        }
+
         protected override void OnPreRender(EventArgs e)
         {            
             base.OnPreRender(e);

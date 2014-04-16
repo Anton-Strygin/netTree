@@ -130,7 +130,7 @@ namespace jsTree
                     sb.AppendFormat("{0}, \n", treePlugin.Settings);
                 }                
                 sb.AppendFormat("'plugins' : [ {0} ] \n",
-                                string.Join(", ", Plugins.Select(r => string.Format("'{0}'",r.Name)).Where(r => !string.IsNullOrEmpty(r))));
+                                string.Join(", ", Plugins.Select(r => string.Format("'{0}'",r.Name)).Where(r => !string.IsNullOrEmpty(r)).ToArray()));
                 sb.AppendLine("}");
             }
             sb.AppendLine(");");

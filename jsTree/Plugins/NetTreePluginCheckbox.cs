@@ -20,7 +20,7 @@ namespace jsTree.Plugins
                 if (!WholeNode) settings.Add("'whole_node': false");
                 if (!KeepSelectedStyle) settings.Add("'keep_selected_style': false");
                 
-                sb.Append(string.Join(", ", settings));
+                sb.Append(string.Join(", ", settings.ToArray()));
                 sb.Append(" }");
                 return sb.ToString();
             }

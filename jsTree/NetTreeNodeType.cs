@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace jsTree
 {
@@ -49,7 +46,7 @@ namespace jsTree
             sb.Append("{ ");
             if (ValidChildren != null && ValidChildren.Length > 0)
             {
-                var childTypes = string.Join(",", ValidChildren.Select(r => string.Format("'{0}'", r)));
+                var childTypes = string.Join(",", ValidChildren.Select(r => string.Format("'{0}'", r)).ToArray());
                 sb.AppendFormat("'valid_children': [{0}]", childTypes);
             }
             if (!string.IsNullOrEmpty(Icon))
