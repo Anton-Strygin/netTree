@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -47,6 +48,12 @@ namespace jsTree
         /// This setting will be ignored if tree has "state" plugin</summary>
         public bool? InitiallyCollapsed { get; set; }
 
+        /// <summary>Show tree leafs with default leaf icon.
+        /// True by default</summary>
+        public bool ShowLeafType { get; set; }
+
+        public List<NetTreeNodeType> NodeTypes { get; private set; }
+
         /// <summary>This message shown if no items selected before form submit</summary>
         public string RequiredItemValidationMessage { get; set; }
 
@@ -67,6 +74,8 @@ namespace jsTree
         public NetTreeGeneric()
         {
             Plugins = new List<INetTreePlugin>();
+            ShowLeafType = true;
+            NodeTypes = new List<NetTreeNodeType>();
         }
 
         protected virtual string GetNodeDescription(TV value)
@@ -176,6 +185,22 @@ namespace jsTree
 
         protected override void OnPreRender(EventArgs e)
         {
+            if (ShowLeafType)
+            {
+                string leafIconUrl = this.Page.ResolveUrl("~/scripts/jsTree/themes/netTree/leaf_node.gif");
+                var leafType = new NetTreeNodeType
+                {
+                    Icon = leafIconUrl,
+                    Name = "leaf"
+                };
+                NodeTypes.Add(leafType);
+            }
+
+            if (NodeTypes.Count > 0)
+            {
+                this.Plugins.Add(new NetTreePluginTypes(NodeTypes));
+            }
+
             InitializeTree();
             RememberCheckedNodes();
             base.OnPreRender(e);

@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>jsTree example</title>
-    <link rel="stylesheet" href="/scripts/jsTree/themes/argustree/style.css" />
+    <link rel="stylesheet" href="/scripts/jsTree/themes/netTree/style.css" />
     <script type="text/javascript" src="/scripts/jquery-2.1.0.js"></script>
 	<script type="text/javascript" src="/scripts/jsTree/jstree.js"></script>
 	<script type="text/javascript" src="/scripts/jsTree/netTree.js"></script>

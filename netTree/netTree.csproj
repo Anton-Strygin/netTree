@@ -64,15 +64,16 @@
     <Content Include="Scripts\jsTree\jstree.js" />
     <Content Include="Scripts\jsTree\jstree.min.js" />
     <Content Include="Scripts\jsTree\netTree.js" />
-    <Content Include="Scripts\jsTree\themes\argustree\32px.png" />
-    <Content Include="Scripts\jsTree\themes\argustree\32px_old.png" />
-    <Content Include="Scripts\jsTree\themes\argustree\40px.png" />
-    <Content Include="Scripts\jsTree\themes\argustree\style.css" />
-    <Content Include="Scripts\jsTree\themes\argustree\throbber.gif" />
     <Content Include="Scripts\jsTree\themes\default\32px.png" />
     <Content Include="Scripts\jsTree\themes\default\40px.png" />
     <Content Include="Scripts\jsTree\themes\default\style.css" />
     <Content Include="Scripts\jsTree\themes\default\throbber.gif" />
+    <Content Include="Scripts\jsTree\themes\netTree\32px.png" />
+    <Content Include="Scripts\jsTree\themes\netTree\32px_old.png" />
+    <Content Include="Scripts\jsTree\themes\netTree\40px.png" />
+    <Content Include="Scripts\jsTree\themes\netTree\leaf_node.gif" />
+    <Content Include="Scripts\jsTree\themes\netTree\style.css" />
+    <Content Include="Scripts\jsTree\themes\netTree\throbber.gif" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -103,6 +104,7 @@
       <Name>jsTree</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace jsTree
@@ -44,25 +45,29 @@ namespace jsTree
             var sb = new StringBuilder();
             sb.AppendFormat("'{0}' : ", Name);
             sb.Append("{ ");
+
+            var settings = new List<string>();
+
             if (ValidChildren != null && ValidChildren.Length > 0)
             {
                 var childTypes = string.Join(",", ValidChildren.Select(r => string.Format("'{0}'", r)).ToArray());
-                sb.AppendFormat("'valid_children': [{0}]", childTypes);
+                settings.Add(string.Format("'valid_children': [{0}]", childTypes));
             }
             if (!string.IsNullOrEmpty(Icon))
             {
-                sb.AppendFormat(", 'icon': '{0}'", Icon);
+                settings.Add(string.Format("'icon': '{0}'", Icon));
             }
             if (MaxChildren>0)
             {
-                sb.AppendFormat(", 'max_children' : {0}", MaxChildren);
+                settings.Add(string.Format("'max_children' : {0}", MaxChildren));
             }
             if (MaxDepth > 0)
             {
-                sb.AppendFormat(", 'max_depth' : {0}", MaxDepth);
+                settings.Add(string.Format("'max_depth' : {0}", MaxDepth));
             }
+            sb.Append(string.Join(", ", settings.ToArray()));
             sb.Append("}");
-            return base.ToString();
+            return sb.ToString();
         }
 
     }
