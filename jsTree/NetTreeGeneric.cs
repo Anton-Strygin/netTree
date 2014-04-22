@@ -25,7 +25,7 @@ namespace jsTree
         //Javascript event occur when user selects some tree node
         public string JSOnNodeSelected { get; set; }
 
-        public string JSSelectedItems { get { return string.Format("document.getElementById('{0}').value", _hfSelectedItems.ClientID); } }
+        public string JSSelectedItems { get { return string.Format("getSelectedNodes('{0}')", JSTreeId); } }
 
         public string JSSelectedNodesValidation { get; set; }
 

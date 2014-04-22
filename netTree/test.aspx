@@ -17,6 +17,7 @@
         <asp:Literal ID="litSelectedItems" runat="server" />
         <br />         
         <asp:Button runat="server" ID="btnPostback" Text="ClickMe"/>
+        <a href="#" onclick="alert(<%=categoryTree.JSSelectedItems%>)">JS Get selected items</a>
         <div>
             <wc:SimpleTree ID="simpleTree"  runat="server" />
         </div>

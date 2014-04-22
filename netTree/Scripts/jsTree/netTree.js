@@ -16,6 +16,20 @@ function rememberCheckedNodes(treeId, selectedItemsId, validateSelectedItems) {
     return true;
 }
 
+function parseNodeId(treeId, nodeKey) {
+    if (!nodeKey) return "";    
+    return nodeKey.replace(treeId + '_', '');
+}
+
+function getSelectedNodes(treeId) {
+    var selectedIds = $('#' + treeId).jstree(true).get_selected();
+    var parsedIds = [];
+    $.each(selectedIds, function (index, value) {
+        parsedIds.push(parseNodeId(treeId, value));
+    });
+    return parsedIds.join(',');
+}
+
 function selectNode(e, data) {
     var treeInstance = $('#' + this.id);    
     var rootNodeId = e.data.rootNodeId;
