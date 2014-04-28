@@ -23,6 +23,7 @@ namespace jsTree
         }
 
         //Javascript event occur when user selects some tree node
+        //it should be javascript function name with two parameters - event args and data
         public string JSOnNodeSelected { get; set; }
 
         public string JSSelectedItems { get { return string.Format("getSelectedNodes('{0}')", JSTreeId); } }
@@ -159,6 +160,12 @@ namespace jsTree
                     sb.AppendFormat(treeInstance + ".jstree(true).select_node('{1}');\n", this.JSTreeId, GetNodeId(item));
                 }
             }
+            //add event handler OnNodeSelected if necessary
+            if (!string.IsNullOrEmpty(JSOnNodeSelected))
+            {
+                sb.AppendFormat("bindNodeSelection('{0}', {1});\n", this.JSTreeId, JSOnNodeSelected);
+            }
+
             sb.AppendLine(treeInstance + ".show();");
             sb.AppendLine("});");
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "InitializeTree_" + this.JSTreeId, sb.ToString(), true);
@@ -202,7 +209,7 @@ namespace jsTree
             }
 
             InitializeTree();
-            RememberCheckedNodes();
+            RememberCheckedNodes();            
             base.OnPreRender(e);
         }
 

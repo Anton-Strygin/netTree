@@ -11,6 +11,11 @@
     <script type="text/javascript" src="/scripts/jquery-2.1.0.js"></script>
 	<script type="text/javascript" src="/scripts/jsTree/jstree.js"></script>
 	<script type="text/javascript" src="/scripts/jsTree/netTree.js"></script>
+    <script type="text/javascript">
+        function nodeSelected(e, data) {            
+            alert(parseNodeId(e.target.id, data.node.id));
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -19,7 +24,7 @@
         <asp:Button runat="server" ID="btnPostback" Text="ClickMe"/>
         <a href="#" onclick="alert(<%=categoryTree.JSSelectedItems%>)">JS Get selected items</a>
         <div>
-            <wc:SimpleTree ID="simpleTree"  runat="server" />
+            <wc:SimpleTree ID="simpleTree"  runat="server" JSOnNodeSelected="nodeSelected" />
         </div>
         <br /> 
         <div>

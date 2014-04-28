@@ -76,7 +76,7 @@ function deselectNode(e, data) {
             treeInstance.jstree(true).deselect_node('#'+rootNodeId);
             treeInstance.find('a').first().find('i').first().attr('class', 'jstree-icon jstree-checkbox');
         }
-    } // else");
+    } //else
     treeInstance.on('deselect_node.jstree', { 'amountOfTreeNodes': amountOfTreeNodes, 'rootNodeId': rootNodeId }, deselectNode);
 } // function deselectNode
 
@@ -89,5 +89,12 @@ function setRootNodeState(treeId, rootNodeId, selectedItems, nodesCount) {
     {
         $('#' + treeId).jstree(true).select_node('#' + rootNodeId);
         $('#' + treeId).find('a').first().find('i').first().attr('class', 'jstree-icon jstree-checkbox');
+    }
+}
+
+// bind select_node event handler
+function bindNodeSelection(treeId, jsOnNodeSelect) {
+    if (jsOnNodeSelect && (typeof jsOnNodeSelect == "function")) {
+        $('#' + treeId).bind('select_node.jstree', jsOnNodeSelect);
     }
 }

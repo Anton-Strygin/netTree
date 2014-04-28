@@ -32,7 +32,7 @@ namespace jsTree.Plugins
             {
                 var sb = new StringBuilder();
                 sb.Append("'core': { 'multiple': ");
-                sb.Append(Multiple);
+                sb.Append(Multiple.ToString().ToLower());
                 if (!string.IsNullOrEmpty(CheckCallback))
                     sb.AppendFormat(", 'check_callback': {0}", CheckCallback);
                 sb.Append(" }");

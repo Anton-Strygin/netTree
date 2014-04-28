@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using jsTree;
+using jsTree.Plugins;
 
 namespace netTree
 {
@@ -25,6 +26,8 @@ namespace netTree
 
         private void FlatDataSourceExample()
         {
+            var corePlugin = new NetTreePluginCore {Multiple = false};
+            categoryTree.Plugins.Add(corePlugin);
             var categories = new List<Category>
                 {
                     new Category {Id = 1, ParentId = 0, Description = "first root node"},
