@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -135,9 +134,10 @@ namespace jsTree
             if (Plugins.Count > 0)
             {
                 sb.AppendLine("{");
-                foreach (INetTreePlugin treePlugin in Plugins)
+                foreach (var treePlugin in Plugins)
                 {
-                    sb.AppendFormat("{0}, \n", treePlugin.Settings);
+                    if (!string.IsNullOrEmpty(treePlugin.Settings))
+                        sb.AppendFormat("{0}, \n", treePlugin.Settings);
                 }                
                 sb.AppendFormat("'plugins' : [ {0} ] \n",
                                 string.Join(", ", Plugins.Select(r => string.Format("'{0}'",r.Name)).Where(r => !string.IsNullOrEmpty(r)).ToArray()));
