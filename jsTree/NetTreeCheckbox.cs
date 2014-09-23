@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Web.UI;
 using jsTree.Plugins;
@@ -30,11 +31,29 @@ namespace jsTree
             Plugins.Add(_cbPlugin);
         }
 
+        public override string JSSelectedItems
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(RootNode)
+                        ? string.Format("getSelectedNodes('{0}', '{1}')", JSTreeId, RootNodeId)
+                        : base.JSSelectedItems;
+            }
+        }
+
         public bool TwoState
         {
             get { return !_cbPlugin.ThreeState; }
             set { _cbPlugin.ThreeState = !value; }
         }
+
+        protected override bool ParseNodeId(string id, out TK parsed)
+        {
+            parsed = default(TK);
+            bool result = !string.IsNullOrEmpty(RootNode) && (id != RootNodeId);
+            result = result && base.ParseNodeId(id, out parsed);
+            return result;
+        }        
 
         /// <summary>
         /// This method used to make root node work as Select All / Select None. Used only in case of two_state is true
@@ -52,12 +71,7 @@ namespace jsTree
                 sb.AppendLine("});");
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "BindCheckNodes_" + this.JSTreeId, sb.ToString(), true);
             }
-        }
-
-        protected override TK ParseNodeId(string id)
-        {
-            return id == RootNodeId ? default(TK) : base.ParseNodeId(id);
-        }
+        }        
 
         protected override void OnPreRender(EventArgs e)
         {            

@@ -17,7 +17,7 @@ function rememberCheckedNodes(treeId, selectedItemsId, validateSelectedItems) {
 }
 
 function parseNodeId(treeId, nodeKey) {
-    if (!nodeKey) return "";    
+    if (!nodeKey) return "";
     return nodeKey.replace(treeId + '_', '');
 }
 
@@ -26,6 +26,16 @@ function getSelectedNodes(treeId) {
     var parsedIds = [];
     $.each(selectedIds, function (index, value) {
         parsedIds.push(parseNodeId(treeId, value));
+    });
+    return parsedIds.join(',');
+}
+
+function getSelectedNodes(treeId, rootNodeId) {
+    var selectedIds = $('#' + treeId).jstree(true).get_selected();
+    var parsedIds = [];
+    $.each(selectedIds, function (index, value) {
+        if (value != rootNodeId)
+            parsedIds.push(parseNodeId(treeId, value));
     });
     return parsedIds.join(',');
 }
@@ -81,6 +91,7 @@ function deselectNode(e, data) {
 } // function deselectNode
 
 function setRootNodeState(treeId, rootNodeId, selectedItems, nodesCount) {
+    nodesCount = nodesCount - 1; //exclude root node
     if(selectedItems > 0 && selectedItems  < nodesCount) {
         $('#' + treeId).find('a').first().find('i').first().attr('class', 'jstree-icon jstree-checkbox jstree-undetermined ');
     }

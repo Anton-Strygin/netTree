@@ -12,7 +12,7 @@ namespace netTree
         public CategoryTree()
         {
             RootNode = "Select all";
-            TwoState = true;
+            TwoState = true;            
         }
 
         protected override string GetNodeDescription(Category value)

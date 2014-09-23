@@ -26,7 +26,7 @@ namespace netTree
 
         private void FlatDataSourceExample()
         {
-            var corePlugin = new NetTreePluginCore {Multiple = false};
+            var corePlugin = new NetTreePluginCore {Multiple = true};
             categoryTree.Plugins.Add(corePlugin);
             var categories = new List<Category>
                 {

@@ -25,7 +25,7 @@ namespace jsTree
         //it should be javascript function name with two parameters - event args and data
         public string JSOnNodeSelected { get; set; }
 
-        public string JSSelectedItems { get { return string.Format("getSelectedNodes('{0}')", JSTreeId); } }
+        public virtual string JSSelectedItems { get { return string.Format("getSelectedNodes('{0}')", JSTreeId); } }
 
         public string JSSelectedNodesValidation { get; set; }
 
@@ -36,7 +36,7 @@ namespace jsTree
         private const string SelectedItemsDefaultValue = "default";
 
         private List<TK> _selectedItems;
-        public List<TK> SelectedItems
+        public virtual List<TK> SelectedItems
         {
             get
             {
@@ -62,11 +62,19 @@ namespace jsTree
             return string.Format("{0}_{1}", this.JSTreeId, key);
         }
 
-        protected virtual TK ParseNodeId(string id)
+        protected virtual bool ParseNodeId(string id, out TK parsed)
         {
-            return string.IsNullOrEmpty(id)
-                       ? default(TK)
-                       : (TK)Convert.ChangeType(id.Substring(this.JSTreeId.Length + 1), typeof(TK));
+            parsed = default(TK);
+            if (string.IsNullOrEmpty(id)) return false;
+            try
+            {
+                parsed = (TK)Convert.ChangeType(id.Substring(this.JSTreeId.Length + 1), typeof(TK));
+            }
+            catch (Exception)
+            {
+                return false;                
+            }            
+            return true;
         }
 
         public List<INetTreePlugin> Plugins { get; private set; }
@@ -88,7 +96,13 @@ namespace jsTree
             if (string.IsNullOrEmpty(strItems)) return new List<TK>();
             var res1 =
                 strItems.Split(',').ToList();
-            var result = res1.Select(ParseNodeId).ToList();
+            var result = new List<TK>();
+            foreach (string s in res1)
+            {
+                TK parsed;
+                if (ParseNodeId(s, out parsed))
+                    result.Add(parsed);
+            }
             return result;
         }
 
