@@ -50,10 +50,12 @@ namespace jsTree
         protected override bool ParseNodeId(string id, out TK parsed)
         {
             parsed = default(TK);
-            bool result = !string.IsNullOrEmpty(RootNode) && (id != RootNodeId);
-            result = result && base.ParseNodeId(id, out parsed);
-            return result;
-        }        
+            if (!string.IsNullOrEmpty(RootNode))
+            {
+                if (id == RootNodeId) return false;
+            }            
+            return base.ParseNodeId(id, out parsed);
+        }
 
         /// <summary>
         /// This method used to make root node work as Select All / Select None. Used only in case of two_state is true
