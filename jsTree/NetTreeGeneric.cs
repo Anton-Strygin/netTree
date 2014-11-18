@@ -158,13 +158,6 @@ namespace jsTree
                 sb.AppendLine("}");
             }
             sb.AppendLine(");");
-            if (InitiallyCollapsed != null)
-            {
-                if (InitiallyCollapsed.Value)
-                    sb.AppendLine(treeInstance + ".jstree(true).close_all();");
-                else
-                    sb.AppendLine(treeInstance + ".jstree(true).open_all();");
-            }
 
             //when tree is loaded, set selected items, expande/collapse, and show the tree
             if (this.SelectedItems.Count > 0)
@@ -179,10 +172,22 @@ namespace jsTree
             {
                 sb.AppendFormat("bindNodeSelection('{0}', {1});\n", this.JSTreeId, JSOnNodeSelected);
             }
-
+            CollapseExpandNodes(sb);
             sb.AppendLine(treeInstance + ".show();");
             sb.AppendLine("});");
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "InitializeTree_" + this.JSTreeId, sb.ToString(), true);
+        }
+
+        protected virtual void CollapseExpandNodes(StringBuilder sb)
+        {
+            string treeInstance = string.Format("$('#{0}')", this.JSTreeId);
+            if (InitiallyCollapsed != null)
+            {
+                if (InitiallyCollapsed.Value)
+                    sb.AppendLine(treeInstance + ".jstree(true).close_all();");
+                else
+                    sb.AppendLine(treeInstance + ".jstree(true).open_all();");
+            }
         }
 
 

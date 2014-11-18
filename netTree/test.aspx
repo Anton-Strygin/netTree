@@ -28,7 +28,7 @@
         </div>
         <br /> 
         <div>
-            <wc:CategoryTree ID="categoryTree"  runat="server" />
+            <wc:CategoryTree ID="categoryTree"  runat="server" InitiallyCollapsed="True" />
         </div>              
     </form>
 </body>

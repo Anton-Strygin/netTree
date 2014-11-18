@@ -39,7 +39,8 @@ namespace netTree
                 };
             categoryTree.DataSourceTree = new NetTreeDataSource<int, Category>(categories, item => item.Id, item => item.ParentId);            
             categoryTree.SelectedItems.Add(2);
-        }        
+            categoryTree.SelectedItems.Add(6);
+        }
 
 
         protected void Page_Load(object sender, EventArgs e)

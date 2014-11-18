@@ -73,7 +73,23 @@ namespace jsTree
                 sb.AppendLine("});");
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "BindCheckNodes_" + this.JSTreeId, sb.ToString(), true);
             }
-        }        
+        }
+
+        protected override void CollapseExpandNodes(StringBuilder sb)
+        {
+            string treeInstance = string.Format("$('#{0}')", this.JSTreeId);
+            if (InitiallyCollapsed != null)
+            {
+                if (InitiallyCollapsed.Value)
+                {
+                    sb.AppendLine(treeInstance + ".jstree(true).close_all();");
+                    if (!string.IsNullOrEmpty(RootNode))
+                    sb.AppendLine(treeInstance + ".jstree(true).open_node($('#"+RootNodeId+"'))");
+                }
+                else
+                    sb.AppendLine(treeInstance + ".jstree(true).open_all();");
+            }
+        }
 
         protected override void OnPreRender(EventArgs e)
         {            
