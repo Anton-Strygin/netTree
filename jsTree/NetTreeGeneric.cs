@@ -110,7 +110,8 @@ namespace jsTree
         {
             var sb = new StringBuilder();
             sb.AppendFormat("$('#{0}')", this.Page.Form.ClientID);
-            sb.AppendFormat(".submit(rememberCheckedNodes('{0}', '{1}', {2}));", this.JSTreeId, _hfSelectedItems.ClientID, string.IsNullOrEmpty(JSSelectedNodesValidation) ? "null" : JSSelectedNodesValidation);
+            sb.AppendFormat(".submit(function(event) {{ var result = rememberCheckedNodes('{0}', '{1}', {2}); if(!result) event.preventDefault(); return result; }});",
+                this.JSTreeId, _hfSelectedItems.ClientID, string.IsNullOrEmpty(JSSelectedNodesValidation) ? "null" : JSSelectedNodesValidation);
             ScriptManager.RegisterOnSubmitStatement(this.Page, this.GetType(), "RememberCheckedNodes_" + this.JSTreeId, sb.ToString());
         }
 
